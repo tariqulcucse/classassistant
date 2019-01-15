@@ -73,5 +73,10 @@ Route::group(['as'=>'teacher.', 'prefix'=>'teacher', 'namespace'=>'Teacher', 'mi
 Route::group(['as'=>'student.', 'prefix'=>'student', 'namespace'=>'Student', 'middleware'=>['auth:student']], function(){
 
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('courses', 'CoursesController@course')->name('courses');
+	Route::get('add-courses', 'CoursesController@create')->name('course.create');
+	Route::post('add-courses', 'CoursesController@store')->name('courses.store');
+	Route::get('assignment', 'CoursesController@assignment')->name('assignment');
+	Route::get('posts', 'CoursesController@posts')->name('posts');
 
 });

@@ -27,4 +27,9 @@ class Student extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course')->withTimestamps();
+    }
 }

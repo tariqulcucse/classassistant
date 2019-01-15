@@ -29,6 +29,19 @@
                     @if(Request::is('student*'))
                         <li><a href="{{route('student.dashboard')}}"><i class="{{Request::is('student/dashboard')? 'active':''}} icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 
+                        <li><a href="{{route('student.courses')}}"><i class="{{Request::is('student/courses')? 'active':''}} icon-tasks"></i><span class="hidden-tablet"> Courses</span></a></li>
+
+                        <li><a href="{{route('student.assignment')}}"><i class="{{Request::is('student/assignment')? 'active':''}} icon-eye-open"></i><span class="hidden-tablet"> Assignment</span></a></li>
+
+                         <li><a href="{{route('student.posts')}}"><i class="{{Request::is('student/posts')? 'active':''}} icon-envelope"></i><span class="hidden-tablet"> Related Posts</span></a></li>
+
+                        
+                    @endif
+{{-- Admin route.............................   --}}
+
+                    @if(Request::is('home*'))
+                        <li><a href="{{route('home')}}"><i class="{{Request::is('home')? 'active':''}} icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+
                         
                     @endif
                     </ul>

@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row-fluid sortable">	
 	
-			<a href="{{route('teacher.course.create')}}" class="btn btn-large btn-info">Add Course</a>	
+			<a href="{{route('student.course.create')}}" class="btn btn-large btn-info">Add Course</a>	
 
 				<div class="box span12">
 					<div class="box-header" data-original-title>
@@ -19,31 +19,22 @@
 						  <thead>
 							  <tr>
 								  <th>Id</th>
-								  <th>View Count</th>
-								  <th>Actions</th>
+								  <th>Courses</th>
 							  </tr>
 						  </thead>  
 						  <tfoot>
 							  <tr>
-								  <th>Id</td>
-								  <th>View Count</th>
-								  <th>Actions</th>
+								  <th>Id</th>
+								  <th>Courses</th>
 							  </tr>
 						  </tfoot>  
 						  <tbody>
 
-						  	@foreach($courses as $key=>$course)
+						  	@foreach ($courses as $key=>$course) 
 								<tr>
 									<td>{{$key+1}}</td>
 									<td>{{$course->name}}</td>
-									<td class="center">
-										<a class="btn btn-info" href="{{route('teacher.course.edit',$course->id)}}">
-											<i class="halflings-icon white edit"></i>  
-										</a>
-										<a class="btn btn-danger" href="#">
-											<i class="halflings-icon white trash"></i> 
-										</a>
-									</td>
+									
 								</tr>
 							@endforeach
 								
