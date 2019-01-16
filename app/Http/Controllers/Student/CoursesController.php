@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Assignment;
 use App\Course;
 use App\Course_Student;
 use App\Http\Controllers\Controller;
 use App\Student;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CoursesController extends Controller
 {
@@ -32,7 +35,7 @@ class CoursesController extends Controller
     	]);
 
     	$course_student = new Course_student();
-    	$course = Course_student::all();
+    	$course = Course_student::all()->where('student_id', Auth::guard('student')->id());
     	foreach ($course as $value) {
     		if ($request->course == $value->course_id) {
     			Toastr::info('Course Already Added...', 'info');
@@ -49,17 +52,63 @@ class CoursesController extends Controller
         return redirect()->route('student.courses');
     }
 
-    public function assignment()
+    public function assignment($id)
     {
     	$student_id = Auth::guard('student')->id();
-    	$courses = Student::find($student_id)->courses()->get();
-    	$teachers = array();
-    	foreach ($courses as $course) {
+		//courses = Student::find($student_id)->courses()->get();
+    	// $teachers = array();
+    	// foreach ($courses as $course) {
 
-    		$teachers[] = Course::find($course->id)->teacher()->get();
-    	}
+    	// 	$teachers[] = Course::find($course->id)->teacher()->get();
+    	// }
 
-    	return view('student.assignment.assignment', compact('courses', 'teachers'));
+    	$course = Course::find($id);
+    	$teacher = Course::find($course->id)->teacher;
+
+    	return view('student.assignment.assignment', compact('course', 'teacher'));
+    }
+
+    public function assignment_store(Request $request)
+    {
+    	$this->validate($request, [
+    		'teacher' => 'required',
+    		'course' => 'required',
+    		'assignment' => 'required',
+    	]);
+
+    	$assignment = $request->file('assignment');
+        $slug = str_slug($request->course);
+
+       if (isset($assignment)) {
+
+           $uniqueFileName = uniqid() . $assignment->getClientOriginalName();
+
+		if (!Storage::disk('public')->exists('assignment')) {
+
+                Storage::disk('public')->makeDirectory('assignment');
+            }
+
+        $request->file('assignment')->move(base_path() . '/public/assignment', $uniqueFileName);
+
+       }else{
+       		Toastr::info('Please Select Your Assignment.','info');
+        	return redirect()->back();
+       }
+
+        $assignment = new Assignment();
+        $assignment->student_id = Auth::guard('student')->id();
+        $assignment->teacher = $request->teacher;
+        $assignment->course = $request->course;
+        $assignment->assignment = $uniqueFileName;
+        $assignment->save();
+
+        Toastr::success('Your Assignment Submited Successfully.','success');
+        return redirect()->back();
+    }
+
+     public function assignment_index()
+    {
+    	return view('student.assignment.index');
     }
 
     public function posts()

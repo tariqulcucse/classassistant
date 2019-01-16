@@ -12,29 +12,27 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form method="post" action=" " class="form-horizontal" enctype="multipart/form-data">
+						<form method="post" action="{{route('student.assignment.submit')}} " class="form-horizontal" enctype="multipart/form-data">
 							@csrf
 						  <fieldset>
 							<div class="control-group">
 							<label class="control-label" for="selectError1">Teacher's Name</label>
 							<div class="controls">
-							  <select id="selectError1" name="course" id="course" multiple="multiple" data-rel="chosen">
-								 @foreach($teachers as $teacher)
-								 	@foreach($teacher as $t)
-                                    <option value="">{{$t['name']}}</option>
-                                	@endforeach
-                                @endforeach
+							  <select id="selectError1" name="teacher" id="course" multiple="multiple" data-rel="chosen">
+								
+                                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                	
 							  </select>
 							</div>
 						  </div>
 
 							<div class="control-group">
-							<label class="control-label" for="selectError1">Course Name</label>
+							<label class="control-label" for="selectError2">Course Name</label>
 							<div class="controls">
-							  <select>
-								 @foreach($courses as $course)
+							  <select id="selectError2" name="course" id="course" multiple="multiple" data-rel="chosen">
+								 
                                     <option value="{{$course->id}}">{{$course->name}}</option>
-                                @endforeach
+                               
 							  </select>
 							</div>
 						  </div>

@@ -1,13 +1,11 @@
 @extends('layouts.backend.app')
 
 @section('content')
-	<div class="row-fluid sortable">	
-	
-			<a href="{{route('student.course.create')}}" class="btn btn-large btn-info">Add Course</a>	
+	<div class="row-fluid sortable">		
 
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon th-large"></i><span class="break"></span> All Course</h2>
+						<h2><i class="halflings-icon th-large"></i><span class="break"></span> All Assignments</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
@@ -20,30 +18,17 @@
 							  <tr>
 								  <th>Id</th>
 								  <th>Courses</th>
-								   <th>Add Assignment</th>
 							  </tr>
 						  </thead>  
 						  <tfoot>
 							  <tr>
 								  <th>Id</th>
 								  <th>Courses</th>
-								  <th>Add Assignment</th>
 							  </tr>
 						  </tfoot>  
 						  <tbody>
 
-						  	@foreach ($courses as $key=>$course) 
-								<tr>
-									<td>{{$key+1}}</td>
-									<td>{{$course->name}}</td>
-									<td class="center">
-										<a class="btn btn-info" href="{{route('student.assignment',$course->id)}}">
-											<i class="halflings-icon white add"></i>  
-										</a>
-										
-									</td>
-								</tr>
-							@endforeach
+						  	
 								
 						  </tbody>
 					  </table>            

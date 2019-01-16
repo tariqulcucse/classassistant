@@ -76,7 +76,9 @@ Route::group(['as'=>'student.', 'prefix'=>'student', 'namespace'=>'Student', 'mi
 	Route::get('courses', 'CoursesController@course')->name('courses');
 	Route::get('add-courses', 'CoursesController@create')->name('course.create');
 	Route::post('add-courses', 'CoursesController@store')->name('courses.store');
-	Route::get('assignment', 'CoursesController@assignment')->name('assignment');
+	Route::get('assignment/index', 'CoursesController@assignment_index')->name('assignment.index');
+	Route::get('assignment/{id}', 'CoursesController@assignment')->name('assignment');
+	Route::post('assignment', 'CoursesController@assignment_store')->name('assignment.submit');
 	Route::get('posts', 'CoursesController@posts')->name('posts');
 
 });
