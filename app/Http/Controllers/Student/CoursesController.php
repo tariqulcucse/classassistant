@@ -108,7 +108,10 @@ class CoursesController extends Controller
 
      public function assignment_index()
     {
-    	return view('student.assignment.index');
+    	$assignments = Assignment::latest()->where('student_id', Auth::guard('student')->id())->get();
+    	
+    	
+    	return view('student.assignment.index', compact('assignments'));
     }
 
     public function posts()

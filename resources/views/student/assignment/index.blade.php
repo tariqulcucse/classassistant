@@ -18,18 +18,24 @@
 							  <tr>
 								  <th>Id</th>
 								  <th>Courses</th>
+								  <th>Submitted To</th>
 							  </tr>
 						  </thead>  
 						  <tfoot>
 							  <tr>
 								  <th>Id</th>
 								  <th>Courses</th>
+								  <th>Submitted To</th>
 							  </tr>
 						  </tfoot>  
 						  <tbody>
-
-						  	
-								
+						  	@foreach($assignments as $key=>$assignment)
+						  		<tr>
+									<td>{{$key+1}}</td>
+									<td>{{$assignment->course}}</td>
+									<td>{{$assignment->teacher}}</td>
+						  		</tr>
+							@endforeach	
 						  </tbody>
 					  </table>            
 					</div>

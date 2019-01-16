@@ -20,7 +20,7 @@
 							<div class="controls">
 							  <select id="selectError1" name="teacher" id="course" multiple="multiple" data-rel="chosen">
 								
-                                    <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                    <option value="{{$teacher->name}}">{{$teacher->name}}</option>
                                 	
 							  </select>
 							</div>
@@ -31,7 +31,7 @@
 							<div class="controls">
 							  <select id="selectError2" name="course" id="course" multiple="multiple" data-rel="chosen">
 								 
-                                    <option value="{{$course->id}}">{{$course->name}}</option>
+                                    <option value="{{$course->name}}">{{$course->name}}</option>
                                
 							  </select>
 							</div>

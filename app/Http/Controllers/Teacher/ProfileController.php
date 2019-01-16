@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
@@ -17,6 +18,7 @@ class ProfileController extends Controller
     public function index()
     {
         $teacher = Teacher::find(Auth::user()->id);
+        //return URL::asset('/public/storage/profile/'.$teacher->image);
         return view('teacher.profile.index', compact('teacher'));
     }
 
@@ -27,7 +29,6 @@ class ProfileController extends Controller
             'name'=>'required',
             'about'=>'required',
             'email'=>'required|email',
-            'image'=>'required|image',
         ]);
 
         $image = $request->file('image');
@@ -39,19 +40,19 @@ class ProfileController extends Controller
            $currentDate = Carbon::now()->toDateString();
            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
 
+           $request->file('image')->move(base_path() . '/public/teacherprofile/', $imageName);
 
-               if (!Storage::disk('public')->exists('profile')) {
 
-                   Storage::disk('public')->makeDirectory('profile');
-               }
+               // if (!Storage::disk('public')->exists('profile')) {
 
-               $profileImage = Image::make($image)->resize(263, 263)->save($imageName);
+               //     Storage::disk('public')->makeDirectory('profile');
+               // }
 
-               Storage::disk('public')->put('profile/'.$imageName, $profileImage);
+               // $profileImage = Image::make($image)->resize(263, 263)->save($imageName);
 
-       }else{
-            $imageName = 'default.png';
-        }
+               // Storage::disk('public')->put('profile/'.$imageName, $profileImage);
+
+       }
 
         $user->name = $request->name;
         $user->about = $request->about;

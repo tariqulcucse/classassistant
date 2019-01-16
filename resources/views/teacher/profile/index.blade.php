@@ -74,7 +74,7 @@
 			<div class="box-content">
 				<div class="masonry-gallery">
 					<div id="image-1" class="masonry-thumb">
-						<img class="grayscale" src="{{Storage::url('profile/'.$teacher->image)}}" alt="Sample Image 1">
+						<img class="grayscale" src="{{URL::asset('/teacherprofile/'.$teacher->image)}} " alt="Sample Image 1">
 					</div>
 											
 				</div>
