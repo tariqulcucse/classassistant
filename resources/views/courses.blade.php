@@ -23,7 +23,7 @@
                     @foreach($courses as $course)
                     <div class="col-lg-4">
                         <div class="categories_post">
-                            <img src="{{Storage::url('course/'.$course->image)}}" alt="cousre">
+                            <img src="{{asset('course/'.$course->image)}}" alt="cousre">
                             <div class="categories_details">
                                 <div class="categories_text">
                                     <a href="blog-details.html"><h5>{{$course->name}}</h5></a>

@@ -36,8 +36,22 @@
 								</li> 
 								<li class="nav-item {{Request::is('contact')? 'active':''}}"><a class="nav-link" href="{{route('contact')}}">Contact Us</a></li>
 								
-								<li class="nav-item"><a class="nav-link" href="{{route('student.login')}}">login</a></li> 
-								<li class="nav-item"><a class="nav-link" href="{{route('student.register')}}">Register</a></li> 
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">login</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="{{route('teacher.login.show')}}">Teacher</a>
+										<li class="nav-item"><a class="nav-link" href="{{route('student.login')}}">Student</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="{{route('student.register')}}">Student</a>
+										<li class="nav-item"><a class="nav-link" href="{{route('teacher.register')}}">Teacher</a></li>
+									</ul>
+								</li>
+
 							</ul>
 						</div> 
 					</div>

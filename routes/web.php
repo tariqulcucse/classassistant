@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Teachers Route................................................................
 
-Route::get('teacher-login', 'AuthTeacher\LoginController@showLoginForm')->name('teacher.login');
+Route::get('teacher-login', 'AuthTeacher\LoginController@showLoginForm')->name('teacher.login.show');
 Route::post('teacher/dashboard', 'AuthTeacher\LoginController@login')->name('teacher.login');
 
 Route::post('logout', 'AuthTeacher\LoginController@logout')->name('logout');
