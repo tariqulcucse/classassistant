@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Assignment;
 use App\Http\Controllers\Controller;
 use App\Teacher;
 use Brian2694\Toastr\Facades\Toastr;
@@ -96,5 +97,10 @@ class ProfileController extends Controller
             Toastr::error('Please Enter a valid password.', 'error');
             return redirect()->back();
         }
+    }
+
+    public function allassignment(){
+        $assignments = Assignment::all();
+        return view('teacher.allassignment', compact('assignments'));
     }
 }

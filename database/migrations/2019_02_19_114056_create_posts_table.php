@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('image')->default('default.png');
             $table->text('body');
+            $table->text('course_link');
             $table->integer('view_count')->default(0);
             $table->boolean('status')->default(false);
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');

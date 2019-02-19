@@ -28,10 +28,10 @@
                     @foreach($courses as $course)
                     <div class="col-lg-4"  style="margin-bottom: 20px;">
                         <div class="categories_post">
-                            <img src="{{Storage::url('course/'.$course->image)}}" alt="cousre">
+                            <img src="{{asset('course/'.$course->image)}}" alt="cousre">
                             <div class="categories_details">
                                 <div class="categories_text">
-                                    <a href="blog-details.html"><h5>{{$course->name}}</h5></a>
+                                    <a href="{{ route('course.details', $course->id) }}"><h5>{{$course->name}}</h5></a>
                                     <div class="border_line"></div>
                                     <p>{!!str_limit($course->details, 20)!!}</p>
                                 </div>
@@ -54,12 +54,12 @@
                         
 
                 <div class="row team_inner">
-                
+                    @foreach($teachers as $user)
                     <div class="col-lg-3 col-sm-6">
-                        {{-- @foreach($users as $user)
+
                         <div class="team_item">
                             <div class="team_img">
-                                <img class="rounded-circle" src="{{Storage::url('user/'.$user->image)}}" alt="">
+                                <img class="rounded-circle" src="{{asset('teacherprofile/'.$user->image)}}" alt="">
                                 <div class="hover">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -71,10 +71,8 @@
                                 <p>{{$user->about}}</p>
                             </div>
                         </div>
-                        @endforeach --}}
-                        
                     </div>
-                
+                    @endforeach
                 </div>
 
             </div>
@@ -83,14 +81,14 @@
 @endsection
 
 @section('testimoni')
-<section class="testimonials_area p_120">
+<!-- <section class="testimonials_area p_120">
             <div class="container">
                 <div class="main_title">
                     <h2>Our Free Courses</h2>
                     
                 </div>
                 <div class="testi_slider owl-carousel">
-                    {{-- @foreach($courses as $course)
+                    @foreach($courses as $course)
                     <div class="item">
                         <div class="testi_item">
                             <h4>{{$course->name}}</h4>
@@ -104,10 +102,10 @@
                             <p>{{$course->slug}}</p>
                         </div>
                     </div>
-                @endforeach   --}}
+                @endforeach
                 </div>
             </div>
-        </section>
+        </section> -->
 @endsection
 
 @section('pakages')

@@ -11,7 +11,7 @@
 
                         <li><a href="{{route('teacher.post.create')}}"><i class="icon-envelope"></i><span class="hidden-tablet"> Add Post</span></a></li>
                         
-                        <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> Assignments</span></a></li>
+                        <li><a href="{{ route('teacher.allassignment') }}"><i class="icon-eye-open"></i><span class="hidden-tablet"> Assignments</span></a></li>
                         <li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Attendents</span></a></li>
                         <li>
                             <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Students</span><span class="label label-important"> 3 </span></a>
@@ -41,7 +41,6 @@
 
                     @if(Request::is('home*'))
                         <li><a href="{{route('home')}}"><i class="{{Request::is('home')? 'active':''}} icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
-
                         
                     @endif
                     </ul>

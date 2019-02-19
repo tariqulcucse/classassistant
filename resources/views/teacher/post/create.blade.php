@@ -34,7 +34,13 @@
 								</div>
 							  </div>
 
-							
+							<div class="control-group">
+							  <label class="control-label" for="typeahead">Video Lecture </label>
+							  <div class="controls">
+								<input type="text" name="course_link" class="span6 typeahead" id="typeahead">
+								
+							  </div>
+							</div>
 							
 
 							<div class="control-group">

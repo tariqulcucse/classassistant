@@ -48,7 +48,8 @@ class PostController extends Controller
             'title'=>'required|string|unique:posts',
             'image'=>'required',
             'body'=>'required',
-            'course' => 'required'
+            'course' => 'required',
+            'course_link' => 'required'
         ]);
 
         $image = $request->file('image');
@@ -74,10 +75,11 @@ class PostController extends Controller
         }
 
         $post = new Post();
-        $post->user_id = Auth::id();
+        $post->teacher_id = Auth::id();
         $post->title = $request->title;
         $post->slug = $slug;
         $post->image = $imageName;
+        $post->course_link = $request->course_link;
         $post->body = $request->body;
         $post->save();
 

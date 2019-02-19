@@ -53,16 +53,17 @@ Route::get('student-password/reset', 'AuthStudent\ForgotPasswordController@showL
 Route::post('student-password/email', 'AuthStudent\ForgotPasswordController@sendResetLinkEmail')->name('student.password.email');
 Route::get('student-password/reset/{token}', 'AuthStudent\ResetPasswordController@showResetForm')->name('student.password.reset');
 Route::post('student-password/reset', 'AuthStudent\ResetPasswordController@reset')->name('student.password.update');
+Route::get('course/details/{id}','FrontendController@courseDetails')->name('course.details');
 
 // Teacher Route>................................
 
 Route::group(['as'=>'teacher.', 'prefix'=>'teacher', 'namespace'=>'Teacher', 'middleware'=>['auth:teacher']], function(){
 
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-
 	Route::resource('post', 'PostController');
 	Route::resource('course', 'CourseController');
 	Route::get('profile', 'ProfileController@index')->name('profile.index');
+	Route::get('allassignment', 'ProfileController@allassignment')->name('allassignment');
 	Route::PUT('profile/update', 'ProfileController@profileUpdate')->name('profile.update');
 	Route::PUT('password/update', 'ProfileController@passwordUpdate')->name('password.update');
 
