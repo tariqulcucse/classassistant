@@ -20,7 +20,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::latest()->get();
+        $courses = Course::where('teacher_id', Auth::user()->id)->get();
         return view('teacher.course.index', compact('courses'));
     }
 
@@ -162,5 +162,10 @@ class CourseController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function courseDetails($id){
+        $courses = Course::where('id', $id)->get();
+        return view('teacher.course.course-details', compact('courses'));
     }
 }

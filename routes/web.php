@@ -66,6 +66,7 @@ Route::group(['as'=>'teacher.', 'prefix'=>'teacher', 'namespace'=>'Teacher', 'mi
 	Route::get('allassignment', 'ProfileController@allassignment')->name('allassignment');
 	Route::PUT('profile/update', 'ProfileController@profileUpdate')->name('profile.update');
 	Route::PUT('password/update', 'ProfileController@passwordUpdate')->name('password.update');
+	Route::get('course-details/{id}', 'CourseController@courseDetails')->name('course.showdetails');
 
 });
 

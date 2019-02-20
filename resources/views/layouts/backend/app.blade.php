@@ -32,10 +32,7 @@
     <!-- start: Favicon -->
     <link rel="shortcut icon" href="{{asset('backend/img/favicon.ico')}}">
     <!-- end: Favicon -->
-    
-        
-        
-        
+@stack('css')   
 </head>
 
 <body>
@@ -139,7 +136,7 @@
 
         <script src="{{asset('backend/js/custom.js')}}"></script>
     <!-- end: JavaScript-->
-
+@stack('js')
 </body>
 
 <!-- Mirrored from bootstrapmaster.com/live/metro/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2018 16:56:47 GMT -->

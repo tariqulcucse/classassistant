@@ -40,6 +40,11 @@
 										<a class="btn btn-info" href="{{route('teacher.course.edit',$course->id)}}">
 											<i class="halflings-icon white edit"></i>  
 										</a>
+
+										<a class="btn btn-info" href="{{route('teacher.course.showdetails',$course->id)}}">
+											<i class="halflings-icon white view"></i>  
+										</a>
+
 										<a class="btn btn-danger" href="#">
 											<i class="halflings-icon white trash"></i> 
 										</a>

@@ -16,7 +16,7 @@
 					<td>{{ $assignment->student_id }}</td>
 					<td>{{ $assignment->course }}</td>
 					<td>Theory of relativity</td>
-					<td>12 January, 2019</td>
+					<td>{{$assignment->created_at}}</td>
 					<td><a href="{{URL::asset('assignment/'.$assignment->assignment)}}" class="btn btn-info">View</a> <a href="https://smallseotools.com/plagiarism-checker/" target="_blank" class="btn btn-danger">Check With Plagarism</a></td>
 				</tr>
 
