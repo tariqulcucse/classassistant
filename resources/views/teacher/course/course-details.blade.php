@@ -10,15 +10,9 @@
 @section('content')
 
 		<ul class="list-group">
+			<li class="list-group-item active">{{$course->name}}</li>
 			@foreach($courses as $course)
-			  <li class="list-group-item active">{{$course->name}}</li>
-				@foreach($course->posts as $ps)
-					@if($ps==null)
-			  			{{"No course available"}}
-			  		@else
-			  			<li class="list-group-item"><a href="">{{$ps->title}}</a></li>
-			  		@endif
-			  @endforeach
+			  			<li class="list-group-item"><a href="">{{$course->title}}</a></li>
 			  @endforeach
 		</ul>
 

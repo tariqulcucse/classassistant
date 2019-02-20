@@ -15,4 +15,9 @@ class Post extends Model
     {
     	return $this->belongsTo('App\User');
     }
+
+    public function teacher()
+    {
+    	return $this->belongsTo('App\Teacher');
+    }
 }

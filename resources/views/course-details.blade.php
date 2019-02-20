@@ -43,11 +43,7 @@
 						<div class="tab-content" id="myTabContent">
 							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 								<div class="objctive_text">
-								@foreach($courses as $ps)
-								
-								{!! $ps->details !!}
-								
-								@endforeach
+								{{$course->details}}
 								</div>
 							</div>
 							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -59,12 +55,13 @@
 							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 								<div class="objctive_text">
 									<ul class="list">
-										@foreach($courses as $course)
-										@foreach($course->posts as $ps)
+										<li class="list-group-item active">{{$course->name}}</li>
+										@foreach($courses as $ps)
+										
 											<li><a href="#">{{$ps->title}}</a></li>
 											<li><a href="#">{!!$ps->course_link!!}</a></li>
 
-										@endforeach
+										
 										@endforeach
 									</ul>
 								</div>
@@ -74,6 +71,7 @@
         			<div class="col-lg-4">
         				<div class="c_details_list">
         					<ul class="list">
+
         						@foreach($courses as $ps)
         						
         						<li><a href="#">Trainer’s Name <span>{{$ps->teacher->name}}</span></a></li>

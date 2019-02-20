@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Course;
 use App\Http\Controllers\Controller;
+use App\Post;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -60,38 +61,24 @@ class CourseController extends Controller
            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
 
 
-           if (!Storage::disk('public')->exists('course')) 
-                {
-                    Storage::disk('public')->makeDirectory('course');
-                }
+            if (!Storage::disk('public')->exists('course')) 
+            {
+                Storage::disk('public')->makeDirectory('course');
+            }
 
-// resize image.....
-
-            $course = Image::make($image)->resize(360, 220)->save($imageName);
-
-// store image into category folder.....
+            $course = Image::make($image)->resize(360, 220)->stream();
 
             Storage::disk('public')->put('course/'.$imageName, $course);
-
-// check if slider directory already exists....
 
             if (!Storage::disk('public')->exists('course/details')) 
             {
                 Storage::disk('public')->makeDirectory('course/details');
             }
-
-// resize image.....
-
-            $details = Image::make($image)->resize(750,350)->save($imageName);
-
-// store image into slider folder.....
-
+            $details = Image::make($image)->resize(750,350)->stream();
             Storage::disk('public')->put('course/details/'.$imageName, $details);
-       }else{
-
-        $imageName = 'deafult.png';
-       }
-
+        } else {
+                $imageName = 'sdeafult.png';
+        }
 
         $course = new Course();
         $course->teacher_id = $teacher;
@@ -104,7 +91,7 @@ class CourseController extends Controller
 
         Toastr::success('Course Added Successfully.', 'success');
         return redirect()->route('teacher.course.index');
-    }
+}
 
     /**
      * Display the specified resource.
@@ -161,11 +148,27 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $course = Course::find($id);
+        $post = Post::where('course_id',$id)->get();
+        if (Storage::disk('public')->exists('course/'.$course->image)) {
+            Storage::disk('public')->delete('course/'.$course->image);
+        }
+
+        if (Storage::disk('public')->exists('details/'.$course->image)) {
+            Storage::disk('public')->delete('details/'.$course->image);
+        }
+        foreach ($post as $p) {
+            $p->delete();
+        }
+        
+        $course->delete();
+        Toastr::success('Course Deleted Successfully :)', 'success');
+        return redirect()->route('teacher.course.index');
     }
 
     public function courseDetails($id){
-        $courses = Course::where('id', $id)->get();
-        return view('teacher.course.course-details', compact('courses'));
+        $course = Course::find($id);
+        $courses = Post::where('course_id', $id)->get();
+        return view('teacher.course.course-details', compact('courses', 'course'));
     }
 }

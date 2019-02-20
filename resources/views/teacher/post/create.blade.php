@@ -26,7 +26,7 @@
 							<div class="control-group">
 								<label class="control-label" for="selectError1">Course Name</label>
 								<div class="controls">
-								  <select id="selectError1" name="course[]" id="course" multiple="multiple" data-rel="chosen">
+								  <select id="selectError1" name="course_id" id="course" multiple="multiple" data-rel="chosen">
 									 @foreach($courses as $course)
                                         <option value="{{$course->id}}">{{$course->name}}</option>
                                     @endforeach

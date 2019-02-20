@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Post;
 use App\Teacher;
 use Illuminate\Http\Request;
 
@@ -39,8 +40,9 @@ class FrontendController extends Controller
         // // print_r($courses);
         // // echo "</pre>";
         // return view('course-details',compact('courses'));
-        $courses = Course::where('id', $id)->get();
-        return view('course-details', compact('courses'));
+        $course = Course::find($id);
+        $courses = Post::where('course_id', $id)->get();
+        return view('course-details', compact('courses', 'course'));
     }
    
 }

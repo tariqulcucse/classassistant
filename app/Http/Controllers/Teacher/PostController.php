@@ -31,7 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
+        $courses = Course::where('teacher_id', Auth::user()->id)->get();
         return view('teacher.post.create', compact('courses'));
     }
 
@@ -48,7 +48,7 @@ class PostController extends Controller
             'title'=>'required|string|unique:posts',
             'image'=>'required',
             'body'=>'required',
-            'course' => 'required',
+            'course_id' => 'required',
             'course_link' => 'required'
         ]);
 
@@ -79,6 +79,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->slug = $slug;
         $post->image = $imageName;
+        $post->course_id = $request->course_id;
         $post->course_link = $request->course_link;
         $post->body = $request->body;
         $post->save();
