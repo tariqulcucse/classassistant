@@ -19,7 +19,6 @@
 								  <th>Post Title</th>
 								  <th>Description</th>
 								  <th>Status</th>
-								  <th>View Count</th>
 								  <th>Actions</th>
 							  </tr>
 						  </thead>  
@@ -29,7 +28,6 @@
 								  <th>Post Title</th>
 								  <th>Description</th>
 								  <th>Status</th>
-								  <th>View Count</th>
 								  <th>Actions</th>
 							  </tr>
 						  </tfoot>  
@@ -39,7 +37,7 @@
 								<tr>
 									<td>{{$key+1}}</td>
 									<td>{{$post->title}}</td>
-									<td class="center">{{str_limit($post->body, 40)}}</td>
+									<td class="center">{!! str_limit($post->body, 40) !!}</td>
 									<td class="center">
 										@if($post->status == false)
 								  			<span class="label label-success">Published </span>
@@ -47,7 +45,6 @@
 								  			<span class="label label-warning">Pending </span>
 								  		@endif
 									</td>
-									<td class="center">	<span class="label label-info">{{$post->view_count}} </span></td>
 									<td class="center">
 										<a class="btn btn-success" href="#">
 											<i class="halflings-icon white zoom-in"></i>  

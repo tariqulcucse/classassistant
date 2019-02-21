@@ -32,6 +32,7 @@ class Teacher extends Authenticatable
     {
         return $this->hasMany('App\Course');
     }
+    
     public function posts()
     {
         return $this->hasMany('App\Post');

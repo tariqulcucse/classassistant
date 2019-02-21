@@ -11,9 +11,8 @@
 |
 */
 
-
+/*Frontend Route*/
 Route::get('/', 'FrontendController@welcome')->name('welcome');
-
 Route::get('about', 'FrontendController@about')->name('about');
 Route::get('contact', 'FrontendController@contact')->name('contact');
 Route::get('courses', 'FrontendController@courses')->name('courses');
@@ -83,4 +82,8 @@ Route::group(['as'=>'student.', 'prefix'=>'student', 'namespace'=>'Student', 'mi
 	Route::post('assignment', 'CoursesController@assignment_store')->name('assignment.submit');
 	Route::get('posts', 'CoursesController@posts')->name('posts');
 
+	Route::get('course-details/{id}', 'CoursesController@courseDetails')->name('course.showdetails');
 });
+
+/*Subscriber route*/
+Route::post('subscribe','SubscriberController@subscribe')->name('subscribe');

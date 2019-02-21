@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Course;
 use App\Http\Controllers\Controller;
+use App\Notifications\NotifySubByAgent;
 use App\Post;
+use App\Subscriber;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -88,6 +91,12 @@ class CourseController extends Controller
         $course->image = $imageName;
         $course->save();
 
+        $subscribers = Subscriber::all();
+        foreach($subscribers as $subscriber)
+        {
+            Notification::route('mail', $subscriber->email)
+            ->notify(new NotifySubByAgent($course));
+        }
 
         Toastr::success('Course Added Successfully.', 'success');
         return redirect()->route('teacher.course.index');

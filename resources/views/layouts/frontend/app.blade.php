@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="{{asset('frontend/vendors/linericon/style.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/vendors/owl-carousel/owl.carousel.min.css')}}">
+            <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <!-- start: CSS -->
         <link rel="stylesheet" href="{{asset('frontend/vendors/lightbox/simpleLightbox.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/vendors/nice-select/css/nice-select.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/vendors/animate-css/animate.css')}}">
@@ -72,7 +74,20 @@
         
         
         
-        
+            <!-- start: JavaScript-->
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
+         <script>
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                toastr.error('{{$error}}','Error',{
+                    clseButton:true,
+                    progressBar:true
+                });
+            @endforeach
+        @endif
+    </script>
         
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

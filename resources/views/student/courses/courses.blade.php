@@ -20,14 +20,14 @@
 							  <tr>
 								  <th>Id</th>
 								  <th>Courses</th>
-								   <th>Add Assignment</th>
+								   <th>Action</th>
 							  </tr>
 						  </thead>  
 						  <tfoot>
 							  <tr>
 								  <th>Id</th>
 								  <th>Courses</th>
-								  <th>Add Assignment</th>
+								  <th>Action</th>
 							  </tr>
 						  </tfoot>  
 						  <tbody>
@@ -38,7 +38,10 @@
 									<td>{{$course->name}}</td>
 									<td class="center">
 										<a class="btn btn-info" href="{{route('student.assignment',$course->id)}}">
-											<i class="halflings-icon white add"></i>  
+											Submit Assignment  
+										</a>										
+										<a class="btn btn-info" href="{{route('student.course.showdetails',$course->id)}}">
+											View  
 										</a>
 										
 									</td>

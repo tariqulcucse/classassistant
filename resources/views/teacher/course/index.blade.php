@@ -21,14 +21,14 @@
 						  <thead>
 							  <tr>
 								  <th>Id</th>
-								  <th>View Count</th>
+								  <th>Course Name</th>
 								  <th>Actions</th>
 							  </tr>
 						  </thead>  
 						  <tfoot>
 							  <tr>
 								  <th>Id</td>
-								  <th>View Count</th>
+								  <th>Course Name</th>
 								  <th>Actions</th>
 							  </tr>
 						  </tfoot>  

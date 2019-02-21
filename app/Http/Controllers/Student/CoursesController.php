@@ -6,6 +6,7 @@ use App\Assignment;
 use App\Course;
 use App\Course_Student;
 use App\Http\Controllers\Controller;
+use App\Post;
 use App\Student;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -117,5 +118,11 @@ class CoursesController extends Controller
     public function posts()
     {
     	return view('student.courses.posts');
+    }
+
+    public function courseDetails($id){
+        $course = Course::find($id);
+        $courses = Post::where('course_id', $id)->get();
+        return view('student.courses.course-details', compact('courses', 'course'));
     }
 }

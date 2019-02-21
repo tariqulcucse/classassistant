@@ -33,9 +33,9 @@
 							<li class="nav-item">
 								<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Objectives</a>
 							</li>
-							<li class="nav-item">
+<!-- 							<li class="nav-item">
 								<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Eligibility</a>
-							</li>
+							</li> -->
 							<li class="nav-item">
 								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Course Outline</a>
 							</li>
@@ -46,12 +46,12 @@
 								{{$course->details}}
 								</div>
 							</div>
-							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+<!-- 							<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 								<div class="objctive_text">
 									<p>HTML,CSS,Basic PHP</p>
 									<p>Object Oriented PHP</p>
 								</div>
-							</div>
+							</div> -->
 							<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 								<div class="objctive_text">
 									<ul class="list">
@@ -61,7 +61,6 @@
 											<li><a href="#">{{$ps->title}}</a></li>
 											<li><a href="#">{!!$ps->course_link!!}</a></li>
 
-										
 										@endforeach
 									</ul>
 								</div>
@@ -71,15 +70,8 @@
         			<div class="col-lg-4">
         				<div class="c_details_list">
         					<ul class="list">
-
-        						@foreach($courses as $ps)
-        						
-        						<li><a href="#">Trainer’s Name <span>{{$ps->teacher->name}}</span></a></li>
-        						<li><a href="#">Course Fee <span>$230</span></a></li>
-        						<li><a href="#">Available Seats <span>15</span></a></li>
-        						<li><a href="#">Schedule <span>2.00 pm to 4.00 pm</span></a></li>
-        						
-        						@endforeach
+        						<li><a href="#">Trainer’s Name <span>{{$course->teacher->name}}</span></a></li>
+        						<li><a href="#">Course Fee <span>Free</span></a></li>
         					</ul>
         					<a class="main_btn" href="#">Enroll the Course</a>
         				</div>
