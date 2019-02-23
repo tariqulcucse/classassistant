@@ -16,6 +16,7 @@ Route::get('/', 'FrontendController@welcome')->name('welcome');
 Route::get('about', 'FrontendController@about')->name('about');
 Route::get('contact', 'FrontendController@contact')->name('contact');
 Route::get('courses', 'FrontendController@courses')->name('courses');
+Route::post('contact', 'FrontendController@contactWithTeacher')->name('contact.us');
 
 Auth::routes();
 
@@ -78,6 +79,7 @@ Route::group(['as'=>'student.', 'prefix'=>'student', 'namespace'=>'Student', 'mi
 	Route::get('add-courses', 'CoursesController@create')->name('course.create');
 	Route::post('add-courses', 'CoursesController@store')->name('courses.store');
 	Route::get('assignment/index', 'CoursesController@assignment_index')->name('assignment.index');
+	Route::get('marks/index', 'CoursesController@marks_index')->name('marks.index');
 	Route::get('assignment/{id}', 'CoursesController@assignment')->name('assignment');
 	Route::post('assignment', 'CoursesController@assignment_store')->name('assignment.submit');
 	Route::get('posts', 'CoursesController@posts')->name('posts');

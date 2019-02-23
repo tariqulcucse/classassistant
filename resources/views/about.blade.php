@@ -88,9 +88,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="video_area" id="video">
-                            <img class="img-fluid" src="img/video-1.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('frontend/img/video-1.jpg')}}" alt="">
                             <a class="popup-youtube" href="https://www.youtube.com/watch?v=VufDd-QL1c0">
-                                <img src="img/icon/video-icon-1.png" alt="">
+                                <img src="{{asset('frontend/img/icon/video-icon-1.png')}}" alt="fsjdklj">
                             </a>
                         </div>
                     </div>

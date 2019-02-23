@@ -21,12 +21,12 @@
             <div class="container">
                 <div class="row">
                     @foreach($courses as $course)
-                    <div class="col-lg-4">
+                    <div class="col-lg-4"  style="margin-bottom: 20px;">
                         <div class="categories_post">
-                            <img src="{{asset('course/'.$course->image)}}" alt="cousre">
+                            <img src="{{Storage::url('course/'.$course->image)}}" alt="cousre">
                             <div class="categories_details">
                                 <div class="categories_text">
-                                    <a href="blog-details.html"><h5>{{$course->name}}</h5></a>
+                                    <a href="{{ route('course.details', $course->id) }}"><h5>{{$course->name}}</h5></a>
                                     <div class="border_line"></div>
                                     <p>{!!str_limit($course->details, 20)!!}</p>
                                 </div>

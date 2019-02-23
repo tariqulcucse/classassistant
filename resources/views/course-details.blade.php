@@ -56,9 +56,9 @@
 								<div class="objctive_text">
 									<ul class="list">
 										<li class="list-group-item active">{{$course->name}}</li>
-										@foreach($courses as $ps)
+										@foreach($courses as $key=>$ps)
 										
-											<li><a href="#">{{$ps->title}}</a></li>
+											<li>{{$key+1}}{{". "}}<a href="#">{{$ps->title}}</a></li>
 											<li><a href="#">{!!$ps->course_link!!}</a></li>
 
 										@endforeach

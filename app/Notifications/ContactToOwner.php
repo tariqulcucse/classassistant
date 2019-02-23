@@ -7,18 +7,18 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NotifySubByAgent extends Notification implements ShouldQueue
+class ContactToOwner extends Notification implements ShouldQueue
 {
     use Queueable;
-    public $course;
+    public $sms;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($course)
+    public function __construct($sms)
     {
-        $this->course = $course;
+        $this->sms = $sms;
     }
 
     /**
@@ -44,8 +44,8 @@ class NotifySubByAgent extends Notification implements ShouldQueue
                     ->greeting('Hello, Subscriber!')
                     ->subject('New Course Available.')
                     ->line('There is a new course. we hope you will like it.')
-                    ->line('Course Title: '.$this->course->title)
-                    ->action('View Post', url(route('course.details', $this->course->id)))
+                    ->line('Course Title: '.$this->sms->subject)
+                    ->action('View Post', url(route('course.details', $this->sms->id)))
                     ->line('Thank you so much for being with us :)');
     }
 

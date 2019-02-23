@@ -57,6 +57,11 @@
                                 	<div class="input-group">
                                         <input name="EMAIL" placeholder="Enter email address" type="email">
                                         <button type="submit" class="btn sub-btn"><span class="lnr lnr-arrow-right" onclick="delete_category()"></span></button>
+                                        @if ($errors->has('EMAIL'))
+                                            <span class="" role="alert" style="color:#fff">
+                                                <strong>{{ $errors->first('EMAIL') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>				
                                     <div class="mt-10 info"></div>
                                 </form>

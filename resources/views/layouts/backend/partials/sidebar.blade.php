@@ -32,6 +32,8 @@
                         <li><a href="{{route('student.courses')}}"><i class="{{Request::is('student/courses')? 'active':''}} icon-tasks"></i><span class="hidden-tablet"> Courses</span></a></li>
 
                         <li><a href="{{route('student.assignment.index')}}"><i class="{{Request::is('student/assignment*')? 'active':''}} icon-eye-open"></i><span class="hidden-tablet"> Assignment</span></a></li>
+
+                        <li><a href="{{route('student.marks.index')}}"><i class="{{Request::is('student/marks*')? 'active':''}} icon-eye-open"></i><span class="hidden-tablet"> Marks</span></a></li>
 <!-- 
                          <li><a href="{{route('student.posts')}}"><i class="{{Request::is('student/posts')? 'active':''}} icon-envelope"></i><span class="hidden-tablet"> Related Posts</span></a></li> -->
 

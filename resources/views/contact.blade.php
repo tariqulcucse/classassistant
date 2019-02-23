@@ -35,28 +35,50 @@
                             </div>
                             <div class="info_item">
                                 <i class="lnr lnr-envelope"></i>
-                                <h6><a href="#">support@learnit.com</a></h6>
+                                <h6><a href="#">support@classroom.com</a></h6>
                                 <p>Send us your query anytime!</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-9">
-                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="row contact_form" action="{{route('contact.us')}}" method="post" id="contactForm" novalidate="novalidate">
+                            @csrf
+                            <input type="hidden" name="suemail" value="support@classroom.com">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                                    @if ($errors->has('name'))
+                                        <span class="" role="alert" style="color:red">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+                                    @if ($errors->has('email'))
+                                        <span class="" role="alert" style="color:red">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
+                                    @if ($errors->has('subject'))
+                                        <span class="" role="alert" style="color:red">
+                                            <strong>{{ $errors->first('subject') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
                                 </div>
+                                @if ($errors->has('message'))
+                                    <span class="" role="alert" style="color:red">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="col-md-12 text-right">
                                 <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
